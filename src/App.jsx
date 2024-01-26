@@ -13,8 +13,14 @@ const FILTER_MAP = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-const App = props => {
-    const [tasks, dispatch] = useReducer(tasksReducer, props.tasks);
+const DATA = [
+    { id: "todo-0", name: "Eat", completed: true },
+    { id: "todo-1", name: "Sleep", completed: false },
+    { id: "todo-2", name: "Repeat", completed: false },
+];
+
+const App = () => {
+    const [tasks, dispatch] = useReducer(tasksReducer, []);
     const [filter, setFilter] = useState("All");
 
     const listHeadingRef = useRef(null);
@@ -26,6 +32,13 @@ const App = props => {
             listHeadingRef.current.focus();
         }
     }, [tasks.length, prevTaskLength]);
+
+    useEffect(() => {
+        dispatch({
+            type: "SEED",
+            tasks: JSON.parse(localStorage.getItem("tasks")) || DATA,
+        });
+    }, []);
 
     const createTask = name => {
         dispatch({ type: "CREATE", name });
