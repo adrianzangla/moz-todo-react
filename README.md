@@ -18,3 +18,13 @@ Currently, two official plugins are available:
 -   implemented notes
 
 -   refactor to useReducer
+
+## How to run?
+1. Clone the Repository
+   > ~$ git clone https://github.com/adrianzangla/moz-todo-react.git
+2. Navigate to the Repository Directory
+   > ~$ cd moz-todo-react/
+3. Install Dependencies:
+   > ~/moz-todo-react$ npm i
+4. Run the Development Server
+   > ~/moz-todo-react$ npm run dev
